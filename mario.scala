@@ -69,7 +69,7 @@ class Princesse(var nom: String){
 def malediction_mario() = {
         var game_over = false
         var win = false
-        val mario = new Personnage("Mario", 25, 1000)
+        val mario = new Personnage("Mario", 20, 1000)
         val peach = new Princesse("Peach")
         val goomba = new Ennemi("Goomba")
         val bowser = new Boss("Bowser")
@@ -88,7 +88,7 @@ def malediction_mario() = {
                                         mario.sauter
                                         if (chance(4, 1)){
                                                 mario.battre(goomba)
-                                                if (chance(10, 4) || chance(10, 4)){
+                                                if (chance(10, 4)){
                                                         mario.entrer_chateau
                                                         if (chance(2, 1)){
                                                                 mario.battre(bowser)
