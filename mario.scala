@@ -67,12 +67,26 @@ class Princesse(var nom: String){
 
 /*Création jeu*/
 def malediction_mario() = {
+        val perso_name = scala.io.StdIn.readLine("Entrez le nom du personnage principal: ")
+        println(s"Le nom du personnage principal est ${perso_name}")
+        val perso_pv = scala.io.StdIn.readLine("Entrez le nombre de vie du personnage principal: ").toInt
+        println(s"Le nombre de vie du personnage principal est ${perso_pv}")
+        val perso_money = scala.io.StdIn.readLine("Entrez le nombre d'argent du personnage principal: ").toInt
+        println(s"Le nombre d'argent du personnage principal est ${perso_money}")
+        val princesse_name = scala.io.StdIn.readLine("Entrez le nom de la princesse: ")
+        println(s"Le nom de la princesse est ${princesse_name}")
+        val ennemi_name = scala.io.StdIn.readLine("Entrez le nom de l'ennemi: ")
+        println(s"Le nom de l'ennemi est ${ennemi_name}")
+        val boss_name = scala.io.StdIn.readLine("Entrez le nom du boss: ")
+        println(s"Le nom du boss est ${boss_name}\n")
+        println("-" * 10 + "LE JEU COMMENCE" + "-" * 10)
+
         var game_over = false
         var win = false
-        val mario = new Personnage("Mario", 20, 1000)
-        val peach = new Princesse("Peach")
-        val goomba = new Ennemi("Goomba")
-        val bowser = new Boss("Bowser")
+        val mario = new Personnage(perso_name, perso_pv, perso_money)
+        val peach = new Princesse(princesse_name)
+        val goomba = new Ennemi(ennemi_name)
+        val bowser = new Boss(boss_name)
 
         for (i <- 1 to mario.nombre_vie+1; if (!win)){
                 println(s"Mario a ${mario.nombre_vie} vies")
@@ -88,7 +102,7 @@ def malediction_mario() = {
                                         mario.sauter
                                         if (chance(4, 1)){
                                                 mario.battre(goomba)
-                                                if (chance(10, 4)){
+                                                if (chance(10, 4) || chance(10, 4)){
                                                         mario.entrer_chateau
                                                         if (chance(2, 1)){
                                                                 mario.battre(bowser)
